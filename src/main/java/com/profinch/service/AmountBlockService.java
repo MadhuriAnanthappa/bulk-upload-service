@@ -56,7 +56,7 @@ public class AmountBlockService {
 		CompletableFuture<Void> allFutures = CompletableFuture.allOf(futures.toArray(new CompletableFuture[0]));
 
 		try {
-			allFutures.get(); // Wait for all inserts to complete
+			allFutures.get(); 
 		} catch (InterruptedException | ExecutionException e) {
 			e.printStackTrace();
 			return "F";
