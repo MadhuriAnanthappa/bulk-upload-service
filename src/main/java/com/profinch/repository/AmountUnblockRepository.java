@@ -69,7 +69,7 @@ public class AmountUnblockRepository extends BaseRepository<AmountUnblock> {
 	}
 
 	public void executeAmountUnblock(String reqRefNo, String userId) {
-		executeProcedure(VALIDATION_PROC, Arrays.asList(reqRefNo, userId));
+		executeProcedure(VALIDATION_PROC, Arrays.asList(reqRefNo, userId),false);
 	}
 
 	public Map<String, Object> getStatusByReqRefNo(String reqRefNo) {

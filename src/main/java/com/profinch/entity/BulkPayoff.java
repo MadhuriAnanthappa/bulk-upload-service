@@ -12,20 +12,15 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class BulkPayoff {
-	@NotBlank(message = "loanNo is mandatory")
     private String loanNo;
 
-    @NotBlank(message = "settleAcc is mandatory")
     private String settleAcc;
 
     private String reconNo;
 
-    @NotBlank(message = "ccy is mandatory")
     private String ccy;
 
-    @NotNull(message = "amount is mandatory")
-    @Positive(message = "amount must be greater than zero")
-    private Double amout;
+    private Double amount;
 
     private String waive;
 

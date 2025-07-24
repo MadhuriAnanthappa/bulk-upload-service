@@ -35,8 +35,8 @@ public abstract class BaseRepository<T> {
     /**
      * Executes a stored procedure with the given args.
      */
-    protected void executeProcedure(String procedureCall, List<Object> args) {
-        JdbcUtil.executeProcedure(jdbcTemplate, procedureCall, args);
+    protected void executeProcedure(String procedureCall, List<Object> args, boolean setNlsFormat) {
+        JdbcUtil.executeProcedure(jdbcTemplate, procedureCall, args, setNlsFormat);
     }
 
     /**

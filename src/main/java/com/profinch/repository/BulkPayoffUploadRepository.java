@@ -46,7 +46,7 @@ public class BulkPayoffUploadRepository extends BaseRepository<BulkPayoff> {
 					ps.setString(5, bp.getSettleAcc());
 					ps.setString(6, bp.getReconNo());
 					ps.setString(7, bp.getCcy());
-					ps.setDouble(8, bp.getAmout());
+					ps.setDouble(8, bp.getAmount());
 					ps.setString(9, bp.getWaive());
 					ps.setString(10, bp.getNarration());
 					ps.setString(11, bp.getNotifyCustomer());
@@ -66,7 +66,7 @@ public class BulkPayoffUploadRepository extends BaseRepository<BulkPayoff> {
 	}
 
 	public void executeBulkPayoffProc(String reqRefNo, String userId) {
-		executeProcedure(VALIDATION_PROC, Arrays.asList(reqRefNo, userId));
+		executeProcedure(VALIDATION_PROC, Arrays.asList(reqRefNo, userId),true);
 	}
 
 	public Map<String, Object> getStatusByReqRefNo(String reqRefNo) {

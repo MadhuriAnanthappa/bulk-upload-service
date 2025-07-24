@@ -69,7 +69,7 @@ public class RefundProcessRepository extends BaseRepository<RefundProcess> {
 	}
 
 	public void executeRefundProcess(String reqRefNo, String userId) {
-		executeProcedure(VALIDATION_PROC, Arrays.asList(reqRefNo, userId));
+		executeProcedure(VALIDATION_PROC, Arrays.asList(reqRefNo, userId),true);
 	}
 
 	public Map<String, Object> getStatusByReqRefNo(String reqRefNo) {
