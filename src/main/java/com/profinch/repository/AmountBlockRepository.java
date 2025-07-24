@@ -87,7 +87,7 @@ public class AmountBlockRepository extends BaseRepository<AmountBlock> {
 	}
 
 	public void executeValidationJob(String reqRefNo, String userId) {
-		executeProcedure(VALIDATION_PROC, Arrays.asList(reqRefNo, userId));
+		executeProcedure(VALIDATION_PROC, Arrays.asList(reqRefNo, userId),false);
 	}
 
 	public Map<String, Object> getStatusByReqRefNo(String reqRefNo) {

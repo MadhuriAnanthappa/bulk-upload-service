@@ -63,7 +63,7 @@ public class MonthlyTrackReceivablesRepository extends BaseRepository<MonthlyTra
 	}
 
 	public void executeMonthlyTrackReceivables(String reqRefNo, String userId) {
-		executeProcedure(VALIDATION_PROC, Arrays.asList(reqRefNo, userId));
+		executeProcedure(VALIDATION_PROC, Arrays.asList(reqRefNo, userId),true);
 	}
 
 	public Map<String, Object> getStatusByReqRefNo(String reqRefNo) {

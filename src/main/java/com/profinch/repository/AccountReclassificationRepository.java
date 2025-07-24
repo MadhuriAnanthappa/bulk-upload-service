@@ -69,7 +69,7 @@ public class AccountReclassificationRepository extends BaseRepository<AccountRec
 	}
 
 	public void executeValidationJob(String reqRefNo, String userId) {
-		executeProcedure(VALIDATION_PROC, Arrays.asList(reqRefNo, userId));
+		executeProcedure(VALIDATION_PROC, Arrays.asList(reqRefNo, userId),true);
 	}
 
 	public Map<String, Object> getStatusByReqRefNo(String reqRefNo) {

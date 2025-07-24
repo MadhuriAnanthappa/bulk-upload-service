@@ -65,7 +65,7 @@ public class CustomerCatModRepository extends BaseRepository<CustomerCatMod> {
 	}
 
 	public void executeProcedure(String reqRefNo, String userId) {
-		executeProcedure(VALIDATION_PROC, Arrays.asList(reqRefNo, userId));
+		executeProcedure(VALIDATION_PROC, Arrays.asList(reqRefNo, userId),true);
 	}
 
 	public Map<String, Object> getStatusByReqRefNo(String reqRefNo) {

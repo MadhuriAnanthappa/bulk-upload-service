@@ -15,11 +15,17 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class JdbcUtil {
 	
-	 public static String executeProcedure(JdbcTemplate jdbcTemplate, String procedureCall, List<Object> args) {
-	        return jdbcTemplate.execute(new CallableStatementCreator() {
+	 public static String executeProcedure(JdbcTemplate jdbcTemplate, String procedureCall, List<Object> args, boolean setNlsFormat) {
+		 return jdbcTemplate.execute(new CallableStatementCreator() {
+			 
 	            @Override
 	            public CallableStatement createCallableStatement(Connection con) throws SQLException {
-	                CallableStatement cs = con.prepareCall(procedureCall);
+	            	if (setNlsFormat) {
+	            	try (java.sql.Statement stmt = con.createStatement()) {
+	                    stmt.execute("ALTER SESSION SET NLS_DATE_FORMAT = 'DD-MON-YY'");
+	                }}
+	            	
+	            	CallableStatement cs = con.prepareCall(procedureCall);
 	                for (int i = 0; i < args.size(); i++) {
 	                    cs.setObject(i + 1, args.get(i));
 	                }
