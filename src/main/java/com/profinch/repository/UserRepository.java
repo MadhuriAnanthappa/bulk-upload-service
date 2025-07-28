@@ -2,6 +2,7 @@ package com.profinch.repository;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.Optional;
 
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -21,13 +22,13 @@ public class UserRepository {
     }
 
     public Optional<User> findByUsername(String username) {
-        String sql = "SELECT * FROM smtb_bulkupload_users_custom WHERE username = ?";
+        String sql = "SELECT * FROM smtb_bulkupload_users_custom WHERE username = ? and status = 'O'";
         return jdbcTemplate.query(sql, userRowMapper, username).stream().findFirst();
     }
 
     public void save(User user) {
-        String sql = "INSERT INTO smtb_bulkupload_users_custom (username, user_password, user_role) VALUES (?, ?, ?)";
-        jdbcTemplate.update(sql, user.getUsername(), user.getPassword(), user.getRole());
+        String sql = "INSERT INTO smtb_bulkupload_users_custom (username, user_password, user_role,created_at,status) VALUES (?, ?, ?,?,?)";
+        jdbcTemplate.update(sql, user.getUsername(), user.getPassword(), user.getRole(),LocalDate.now(),"O");
     }
 
     private static class UserRowMapper implements RowMapper<User> {
